@@ -1,73 +1,102 @@
-# Welcome to your Lovable project
+# Stoma Care Buddy
 
-## Project info
+AI 기반 장루 상태 진단 및 건강 관리 애플리케이션
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 소개
 
-## How can I edit this code?
+Stoma Care Buddy는 장루 보유자들의 일상적인 장루 관리를 돕기 위한 모바일 웹 애플리케이션입니다. AI 이미지 분석과 체계적인 문진 시스템을 통해 장루 상태를 진단하고, 적절한 관리 방법을 안내합니다.
 
-There are several ways of editing your application.
+## 주요 기능
 
-**Use Lovable**
+### 1. AI 기반 장루 이미지 분석
+- 장루 사진을 촬영하면 AI가 자동으로 상태를 분석
+- 괴사, 허혈, 피부염 등 이상 징후 감지
+- 밝기 보정을 통한 정확한 분석 지원
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### 2. 체계적인 문진 시스템
+- 응급 상황 선별을 위한 사전 문진
+- AI 분석 결과에 따른 맞춤형 추가 문진
+- 다중 진단 및 위험도(정상/주의/위험) 자동 산정
 
-Changes made via Lovable will be committed automatically to this repo.
+### 3. 건강 기록 관리
+- 진단 기록 저장 및 히스토리 조회
+- 캘린더 기반 일별 기록 확인
+- 밝기값 변화 추이 비교 (7일 전 대비)
 
-**Use your preferred IDE**
+### 4. 일일 체크리스트
+- 오늘의 할 일 관리
+- 장루 관리 루틴 체크
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 기술 스택
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Frontend**: React 18, TypeScript
+- **Build Tool**: Vite
+- **UI Framework**: shadcn/ui, Tailwind CSS
+- **Backend**: Supabase (인증, 데이터베이스)
+- **상태 관리**: TanStack Query
+- **차트**: Recharts
 
-Follow these steps:
+## 시작하기
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 필수 요구사항
+- Node.js 18 이상
+- npm 또는 yarn
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 설치
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+# 저장소 클론
+git clone <repository-url>
+cd stoma-care-buddy
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 의존성 설치
+npm install
+
+# 개발 서버 실행
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### 환경 변수 설정
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+`.env` 파일을 생성하고 다음 변수를 설정하세요:
 
-**Use GitHub Codespaces**
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_API_URL=your_api_server_url
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 스크립트
 
-## What technologies are used for this project?
+```bash
+npm run dev      # 개발 서버 실행
+npm run build    # 프로덕션 빌드
+npm run preview  # 빌드된 앱 미리보기
+npm run lint     # ESLint 검사
+```
 
-This project is built with:
+## 프로젝트 구조
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+src/
+├── components/     # UI 컴포넌트
+│   ├── ui/         # shadcn/ui 기본 컴포넌트
+│   └── ...         # 커스텀 컴포넌트
+├── contexts/       # React Context (인증 등)
+├── hooks/          # 커스텀 훅
+├── integrations/   # 외부 서비스 연동 (Supabase)
+├── lib/            # 유틸리티 함수
+│   ├── api.ts      # API 호출
+│   ├── triage.ts   # 문진 엔진
+│   └── utils.ts    # 공통 유틸
+├── pages/          # 페이지 컴포넌트
+└── assets/         # 이미지 등 정적 자원
+```
 
-## How can I deploy this project?
+## 주의사항
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+본 서비스는 참고용이며, 정확한 진단은 반드시 의료 전문가와 상담하세요.
 
-## Can I connect a custom domain to my Lovable project?
+## 라이선스
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Private - All Rights Reserved
