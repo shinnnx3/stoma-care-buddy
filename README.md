@@ -33,8 +33,6 @@ Stoma Care Buddy는 장루 보유자들의 일상적인 장루 관리를 돕기 
 - **Build Tool**: Vite
 - **UI Framework**: shadcn/ui, Tailwind CSS
 - **Backend**: Supabase (인증, 데이터베이스)
-- **상태 관리**: TanStack Query
-- **차트**: Recharts
 
 ## 시작하기
 
