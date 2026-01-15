@@ -163,7 +163,7 @@ export function CameraCapture({ onCapture, onCancel }: CameraCaptureProps) {
         {!capturedImage && cameraStarted && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="w-64 h-64 border-4 border-primary/50 rounded-3xl">
-              <div className="absolute -top-13 left-1/2 -translate-x-1/2 bg-foreground/80 text-background px-3 py-1 rounded-full text-sm">
+              <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-foreground/80 text-background px-3 py-1 rounded-full text-sm">
                 A4지와 장루를 함께 찍어주세요.
               </div>
             </div>
