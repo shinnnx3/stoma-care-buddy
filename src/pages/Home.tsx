@@ -491,7 +491,7 @@ export default function Home() {
             <div>
               <p className="text-xl font-bold text-warning">
                 {records.length > 0
-                  ? records[0].risk_level === 3 ? "위험" : records[0].risk_level === 2 ? "유의" : "정상"
+                  ? records[0].risk_level === 2 ? "위험" : records[0].risk_level === 1 ? "유의" : "정상"
                   : "-"
                 }
               </p>
