@@ -163,8 +163,8 @@ export function CameraCapture({ onCapture, onCancel }: CameraCaptureProps) {
         {!capturedImage && cameraStarted && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="w-64 h-64 border-4 border-primary/50 rounded-3xl">
-              <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-foreground/80 text-background px-3 py-1 rounded-full text-sm">
-                장루 부위를 프레임 안에 맞춰주세요
+              <div className="absolute -top-13 left-1/2 -translate-x-1/2 bg-foreground/80 text-background px-3 py-1 rounded-full text-sm">
+                A4지와 장루를 함께 찍어주세요.
               </div>
             </div>
           </div>
