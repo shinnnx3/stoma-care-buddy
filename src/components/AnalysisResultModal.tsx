@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { X, Lightbulb, TrendingUp, TrendingDown, Minus } from "lucide-react";
+import BrightnessChart from "@/components/BrightnessChart";
 
 interface AnalysisResultModalProps {
   isOpen: boolean;
@@ -174,6 +175,11 @@ export function AnalysisResultModal({
                 </div>
               )}
             </Card>
+
+            {/* Brightness comparison chart */}
+            <div>
+              <BrightnessChart current={brightnessVal} previous={previousBrightness ?? null} />
+            </div>
 
             {brightnessMessage && (
               <Card className="p-3 bg-primary/5 border-primary/20">

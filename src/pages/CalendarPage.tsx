@@ -10,6 +10,7 @@ import iconCalendarHeader from "@/assets/icon-calendar-header.png";
 import { format, isSameDay, startOfMonth, endOfMonth, eachDayOfInterval, getDay, addMonths, subMonths } from "date-fns";
 import { ko } from "date-fns/locale";
 import { useDiagnosisHistory } from "@/hooks/useDiagnosisHistory";
+import BrightnessChart from "@/components/BrightnessChart";
 import { useCalendarData } from "@/hooks/useCalendarData";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
@@ -18,7 +19,7 @@ const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 export default function CalendarPage() {
   const { user } = useAuth();
-  const { records, isLoading: diagnosisLoading, getRecordsByDate, getRecordsForMonth } = useDiagnosisHistory();
+  const { records, isLoading: diagnosisLoading, getRecordsByDate, getRecordsForMonth, getBrightnessFromDateDaysAgo } = useDiagnosisHistory();
   const {
     getMemoByDate,
     getChecklistsByDate,
@@ -426,6 +427,11 @@ export default function CalendarPage() {
                                 밝기: {record.brightness.toFixed(1)}
                               </span>
                             )}
+                          </div>
+
+                          {/* Brightness comparison chart for this record (7일 전 비교) */}
+                          <div className="mt-3">
+                            <BrightnessChart current={record.brightness ?? undefined} previous={getBrightnessFromDateDaysAgo(record.created_at, 7)} />
                           </div>
 
                           {/* 시간 */}

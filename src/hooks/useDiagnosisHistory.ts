@@ -153,6 +153,40 @@ export function useDiagnosisHistory() {
     return record?.brightness ?? null;
   }, [getRecordFromDaysAgo]);
 
+  // 특정 기준 날짜(baseDate)를 기준으로 X일 전의 기록을 찾는 함수
+  const getRecordFromDateDaysAgo = useCallback((baseDate: Date | string, daysAgo: number = 7) => {
+    const base = typeof baseDate === "string" ? new Date(baseDate) : new Date(baseDate);
+
+    const targetDate = new Date(base);
+    targetDate.setDate(targetDate.getDate() - daysAgo);
+
+    const minDate = new Date(targetDate);
+    minDate.setDate(minDate.getDate() - 2);
+    const maxDate = new Date(targetDate);
+    maxDate.setDate(maxDate.getDate() + 2);
+
+    const recordsInRange = records.filter(record => {
+      const recordDate = new Date(record.created_at);
+      return recordDate >= minDate && recordDate <= maxDate;
+    });
+
+    if (recordsInRange.length === 0) return null;
+
+    return recordsInRange.reduce((closest, record) => {
+      const recordDate = new Date(record.created_at);
+      const closestDate = new Date(closest.created_at);
+      const recordDiff = Math.abs(recordDate.getTime() - targetDate.getTime());
+      const closestDiff = Math.abs(closestDate.getTime() - targetDate.getTime());
+      return recordDiff < closestDiff ? record : closest;
+    });
+  }, [records]);
+
+  // 특정 기준 날짜(baseDate)를 기준으로 X일 전의 밝기값 조회
+  const getBrightnessFromDateDaysAgo = useCallback((baseDate: Date | string, daysAgo: number = 7): number | null => {
+    const record = getRecordFromDateDaysAgo(baseDate, daysAgo);
+    return record?.brightness ?? null;
+  }, [getRecordFromDateDaysAgo]);
+
   useEffect(() => {
     fetchRecords();
   }, [fetchRecords]);
@@ -167,5 +201,7 @@ export function useDiagnosisHistory() {
     getRecordsForMonth,
     getRecordFromDaysAgo,
     getBrightnessFromDaysAgo,
+    getRecordFromDateDaysAgo,
+    getBrightnessFromDateDaysAgo,
   };
 }
