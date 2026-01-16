@@ -290,7 +290,7 @@ export const TREATMENT_DATA: Record<string, TreatmentInfo> = {
   },
   알레르기: {
     description: "제품 성분에 반응하는 '알레르기 피부염'이 의심됩니다.",
-    advice: "사용 중인 장루판 브랜드를 변경하십시오. 심하면 스테로이드 로션 처방이 필요합니다.",
+    advice: "사용 중인 장루판이나 장루주머니를 변경하십시오. 심하면 스테로이드 로션 처방이 필요합니다.",
     emergency_alert: null,
   },
   건선: {
